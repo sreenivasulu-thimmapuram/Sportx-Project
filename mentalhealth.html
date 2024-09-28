@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./physicalstyles.css" />
+  <title>Fitness And Sports</title>
+</head>
+
+<body>
+  <section class="section__container blog__container" id="blog">
+    <h2 class="section__header">Mental Fitness</h2>
+    <p class="section__description">
+      Mental health exercises, like mindfulness, meditation, deep breathing, and journaling, help reduce stress, improve focus, boost emotional well-being, and promote mental resilience.
+    </p>
+  </section>
+  <section class="section__container client__container" id="client">
+    <h2 class="section__header">Workout Schedule</h2>
+    <p class="section__description">
+      Each day select a work out plan and complete the six sessions with in a week and take one day rest if needed
+    </p>
+    <div class="client__card">
+      <h2>Exercise Day_1</h2>
+      <p>1. Mindful Breathing</p>
+      <p>2.  Meditation</p> 
+      <p> 3. Gratitude Journaling</p> 
+      <p>4. Nature Immersion</p> 
+      <p> 5. Art Therapy</p> 
+      <p>6. Laughter Yoga</p> 
+      <p>7.Random acts of Kindness</p>
+    </p>  
+    </div>
+    <div class="client__card">
+      <h2>Exercises Day_2</h2>
+      <p>1. Mindful Breathing</p>
+      <p> 2. Progressive Muscle Relaxation</p>
+      <p>3. Listening to Relaxation Music</p>
+      <p>4. Nature Walks</p>
+      <p>5. Brain Teasers</p>
+      <p>  6. Attension Building Exercises</p>
+      <p>7.Learning a New Skill</p>
+    </p>
+    </div>
+    <div class="client__card">
+      <h2>Exercises Day_3</h2>
+      <p>1.Screen Free Time</p>
+      <p>2.Self Compassion Exercises</p>
+      <p>3.Enjoying The Nature</p>
+      <p>4.Self Forgiveness</p>
+      <p> 5.Playing With Children</p>
+      <p>6.Slef Afirmations</p>
+      <p>7.Sufficient Sleep</p>
+    </div>
+    <div class="client__card">
+      <h2>Exercises Day_4</h2>
+      <p>1. Mindful Breathing</p>
+      <p>2.  Meditation</p> 
+      <p> 3. Gratitude Journaling</p> 
+      <p>4. Nature Immersion</p> 
+      <p> 5. Art Therapy</p> 
+      <p>6. Laughter Yoga</p> 
+      <p>7.Random acts of Kindness</p>
+     
+    </div>
+
+
+    <div class="client__card">
+      <h2>Exercises Day_5</h2>
+      <p>1. Mindful Breathing</p>
+      <p> 2. Progressive Muscle Relaxation</p>
+      <p>3. Listening to Relaxation Music</p>
+      <p>4. Nature Walks</p>
+      <p>5. Brain Teasers</p>
+      <p>  6. Attension Building Exercises</p>
+      <p>7.Learning a New Skill</p>
+    </div>
+
+
+
+    <div class="client__card">
+      <h2>Exercises Day_6</h2>
+      <p>1.Screen Free Time</p>
+      <p>2.Self Compassion Exercises</p>
+      <p>3.Enjoying The Nature</p>
+      <p>4.Self Forgiveness</p>
+      <p> 5.Playing With Children</p>
+      <p>6.Slef Afirmations</p>
+      <p>7.Sufficient Sleep</p>
+      
+    </div>
+  </section>
+  <section>
+    <div class="client__card1">
+    <h1>Select a Disease</h1>
+    
+        <input
+          list="disease"
+          id="d-name"
+          name="disease-name"
+          placeholder="Enter Your Disease"
+        />
+        <datalist id="disease"></datalist>
+    
+        <button onclick="populateDiseaseList()">Populate Disease List</button>
+    
+        <div id="disease-details"></div>
+    
+        <!-- Ensure data script is loaded first -->
+      
+         <script src="mentaldata.js"></script>
+        <!-- Then load main logic -->
+        <script>
+          function populateDiseaseList() {
+            const diseaseList = document.getElementById("disease");
+            diseaseList.innerHTML = ""; // Clear previous options
+    
+            diseasesData.forEach((disease) => {
+              const option = document.createElement("option");
+              option.value = disease.disease;
+              diseaseList.appendChild(option);
+            });
+          }
+    
+          document.getElementById("d-name").addEventListener("input", function () {
+            const selectedDisease = this.value.toLowerCase(); // Convert input to lowercase
+            const disease = diseasesData.find(
+              (d) => d.disease.toLowerCase() === selectedDisease
+            ); // Compare in lowercase
+    
+            const diseaseDetailsDiv = document.getElementById("disease-details");
+    
+            if (disease) {
+              diseaseDetailsDiv.innerHTML = `
+          <h2>Disease: ${disease.disease}</h2>
+          <p><strong>Symptoms:</strong> ${disease.symptoms.join(", ")}</p>
+          <p><strong>Nutrients Needed:</strong> ${disease.nutrients_needed.join(
+            ", "
+          )}</p>
+          <p><strong>Recommended Exercises:</strong> ${disease.exercises_fitness.join(
+            ", "
+          )}</p>
+          <p><strong>Meditation/Yoga Asanas:</strong> ${disease.meditation_yoga_asanas.join(
+            ", "
+          )}</p>
+        `;
+            } else {
+              diseaseDetailsDiv.innerHTML = `<p>No information available for "${this.value}".</p>`;
+            }
+          });
+        </script>
+      </section>
+    </div>
+</body>
